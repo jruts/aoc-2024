@@ -29,7 +29,6 @@ const [sortedGroupOneLocations, sortedGroupTwoLocations] = [
 
 const totalDistanceBetweenLocations = sortedGroupOneLocations.reduce(
 	(acc, location, idx) => {
-		// console.log(Math.abs(location - sortedGroupTwoLocations[idx]));
 		return acc + Math.abs(location - sortedGroupTwoLocations[idx]);
 	},
 	0,
