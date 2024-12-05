@@ -4,7 +4,7 @@ const input = await Deno.readTextFileSync("./src/day5/input1.txt");
 
 const lines = splitByLines(input);
 
-const rules = lines.slice(0, lines.indexOf("")).map((line) =>
+export const rules = lines.slice(0, lines.indexOf("")).map((line) =>
 	line.split("|").map((x) => parseInt(x))
 ).reduce((acc, entry) => {
 	const existingEntry = acc.get(entry[0]);
@@ -16,7 +16,7 @@ const rules = lines.slice(0, lines.indexOf("")).map((line) =>
 	return acc;
 }, new Map<number, number[]>());
 
-const updates = lines.slice(lines.indexOf("") + 1).map((line) =>
+export const updates = lines.slice(lines.indexOf("") + 1).map((line) =>
 	line.split(",").map((x) => parseInt(x))
 );
 
@@ -42,8 +42,10 @@ for (const update of updates) {
 	}
 }
 
-const result = validUpdates.reduce((acc, page) => {
-	return acc + page[Math.floor(page.length / 2)];
-}, 0);
+export function sumMiddlePageNumbers(updates: number[][]) {
+	return updates.reduce((acc, page) => {
+		return acc + page[Math.floor(page.length / 2)];
+	}, 0);
+}
 
-console.log(result);
+console.log(sumMiddlePageNumbers(validUpdates));
